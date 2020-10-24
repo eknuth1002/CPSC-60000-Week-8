@@ -1,1 +1,15 @@
 # CPSC-60000-Week-8
+
+This is the final project for the class.  It uses 4 patterns in its design and a pseudo-use of a 5th.
+
+The fifth is a variant on the MVC pattern, though it is not truly the MVC pattern for reasons I will elaborate on.  I often try to decouple the view from the design to allow for UI changes.  This particular program is done in console because it is the one I can guarantee the user will have.  My preferred Java UI is JavaFX, but it is no longer packaged with Java after Java 8.  Ideally, only a little of the code would need changing should a new UI be chosen.  I also tend to merge the model and controller into one for smaller projects like this.  That is the key reason this is not a Model-View-Controller pattern.  You would have a base model completely decoupled from the controller and each from the view in a true MVC.  While I do highly recommend this decoupling, it is also a balance between work required to achieve/maintain it and benefits of having it.  That really goes for all Design Patterns, but I find the MVC gets hit hardest by this balance.  
+
+The Factory pattern is used for the different regions of pottery.  Each region operates similarly, but with details like designs, glazes, and firing methods changing.  Using the Factory pattern lets us create a basic layout to call and allow the Factory to take over from there.  This allows for easy expansion.
+
+The pieces all use the Decorator pattern for their descriptions.  As this is an ordering program, I am not worried as much about proper grammar such as conjunctions.  However, one can still do so if they choose.  I am more concerned with easily locating the designs and glazes in the order while giving a somewhat organized appearance to the customer.  Again, a GUI would actually show much differently and with a cleaner look.  The benefit of the Decorator here is that we are not worried about calling each one for display.  We get a string containing everything and can display it with a single call.  We can also easily split it, as seen in the Design Add/Remove, using a predetermined delimiter.
+
+The Cart uses a map for easy reference to an individual piece and the number ordered, and an Iterator Pattern is used to travel forward and backward through the list as needed.  The iterator approach is handy because we only need 4 calls to go forward or backward (either one step or all the way) and takes the hassle of guard for out of bounds exceptions out of the main code and into the iterator itself.
+
+The last pattern is the Command pattern, used by the menus within the Factories.  These commands let us only call 2 functions, Execute and Undo, to manipulate the pieces.  We can also cycle through the command list for the options, displaying them, and use an integer to pull the index of the command and run it.  That means it is easy to add and remove commands simply by adding or removing them to a list.
+
+As you can tell, this program is also not finished.  Unfortunately, I have fallen greatly behind due to personal life events but will be trying to finish this at some point.  If only so that it can be a guide for others looking to patterns. 
